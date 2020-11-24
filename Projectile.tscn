@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Cube.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://Projectile.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.976471, 0.258824, 0.164706, 1 )
+emission_enabled = true
+emission = Color( 1, 0.92549, 0.517647, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[node name="Projectile" type="KinematicBody"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="."]
+polygon = PoolVector2Array( 0.117, 0.11, -0.118, 0.104, -0.119, -0.11, 0.116, -0.118 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = SubResource( 1 )
